@@ -1,0 +1,23 @@
+{
+  "name": "multiple-choice-test",
+  "version": "1.0.0",
+  "description": "A test application for student",
+  "main": "app.js",
+  "repository": "git@github.com:shovity/multiple-choice-test.git",
+  "author": "Huong Nguyen <shovity@gmail.com>",
+  "license": "MIT",
+  "private": true,
+
+  "scripts": {
+    "start": "node app",
+    "dev": "nodemon app"
+  },
+
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.2",
+    "pug": "^2.0.0-rc.4",
+    "socket.io": "^2.0.4"
+  }
+}
