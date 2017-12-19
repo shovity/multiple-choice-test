@@ -5,6 +5,9 @@ const bodyParser = require('body-parser')
 
 const index = require('./routes/index')
 
+// open mongodb connect
+const connect = require('./connect')
+
 const app = express()
 const server = http.createServer(app)
 const port = process.env.PORT || 3000
@@ -21,5 +24,5 @@ app.use(index)
 server.listen(port)
 
 server.on('listening', () => {
-  console.log(`Server multiple choice test is listening at port ${port}`)
+  console.log(`server multiple choice test is listening at port ${port}`)
 })

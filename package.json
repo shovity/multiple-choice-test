@@ -7,16 +7,17 @@
   "author": "Huong Nguyen <shovity@gmail.com>",
   "license": "MIT",
   "private": true,
-
   "scripts": {
     "start": "node app",
-    "dev": "nodemon app"
+    "dev": "nodemon app",
+    "start-db": "mongod --dbpath database"
   },
-
   "dependencies": {
     "body-parser": "^1.18.2",
     "cookie-parser": "^1.4.3",
     "express": "^4.16.2",
+    "md5": "^2.2.1",
+    "mongoose": "^4.13.7",
     "pug": "^2.0.0-rc.4",
     "socket.io": "^2.0.4"
   }
