@@ -1,0 +1,12 @@
+extends master
+block content
+  - if (err)
+    .al.al-err=err
+  h2 Login
+  form(method='post', action='/sign-in')
+    label(for='username') Username
+    input(id='username', name='username')
+    label(for='password') Password
+    input(id='password', name='password', type='password')
+    button.btn.btn-primary Login
+  

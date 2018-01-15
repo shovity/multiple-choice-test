@@ -2,9 +2,27 @@ html
   head
     title=title
     meta(meta name='viewport', content='width=device-width, initial-scale=1.0')
-    link(rel='stylesheets', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/font-awesome.min.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
     block head
   body
-    block content
+    #navbar.open
+      a.logo-box(href='/home')
+      i.fa.fa-bars.menu#btnMenu(aria-hidden="true")
+      .items-box
+      .user-box
+        img#avatar(src='/images/unknown-user.png')
+        - if (username)
+          #nameLabel=username
+        - else
+          #nameLabel Guest
+          
+    #sidebar.open
+      ul.sidebar-menu
+        li.header QUICK ACCESS
+        li.item.active News Feed
+        li.item Test Now
+    #content
+      block content
     script(src='/socket.io/socket.io.js')
     script(src='/javascripts/client.js')

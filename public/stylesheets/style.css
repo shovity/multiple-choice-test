@@ -5,4 +5,161 @@
 
 body {
   margin: 0;
+  padding-top: 50px;
+  font-family: Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  overflow: hidden;
+}
+
+#navbar {
+  display: flex;
+  height: 50px;
+  background-color: #dd4b39;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  color: #fff;
+}
+
+#navbar.open > .logo-box {
+  width: 250px;
+}
+
+.logo-box {
+  background-color: #d73925;
+  height: 100%;
+  width: 50px;
+}
+
+i.menu {
+  padding: 0 15px;
+  line-height: 50px;
+  cursor: pointer;
+}
+
+i.menu:hover {
+  background-color: #d73925;
+}
+
+.items-box {
+  flex-grow: 1;
+}
+
+.user-box {
+  display: flex;
+  background-color: #d73925;
+  width: 200px;
+  line-height: 50px;
+}
+
+#avatar {
+  pointer-events: none;
+  background-color: #fff;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  margin: 9px;
+  vertical-align: middle;
+}
+
+#nameLabel {
+  display: inline-block;
+}
+
+/* content */
+#content {
+  position: fixed;
+  top: 50px;
+  right: 0;
+  width: calc(100vw - 50px);
+  height: calc(100vh + 50px);
+  padding: 30px;
+}
+
+#sidebar {
+  width: 50px;
+  height: calc(100vh - 50px);
+  position: fixed;
+  top: 50px;
+  left: 0;
+  background-color: #222d32;
+}
+
+#sidebar.open {
+  width: 250px;
+}
+
+#sidebar.open + #content {
+  width: calc(100vw - 250px);
+}
+
+.logo-box, #sidebar, #content {
+  transition: width .3s ease-in-out;
+}
+
+ul.sidebar-menu {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+li.item {
+  color: #fff;
+  padding: 12px 5px 12px 15px;
+  display: block;
+  border-left: 3px transparent solid;
+  cursor: pointer;
+}
+
+li.item.active, li.item:hover {
+  border-left-color: #dd4b39;
+  background-color: #1e282c;
+}
+
+li.header {
+  color: #4b646f;
+  background-color: #1a2226;
+  padding: 10px 25px 10px 15px;
+  font-size: 12px;
+}
+
+/* form */
+input, label {
+  display: block;
+  color: #222;
+}
+
+input {
+  padding: 5px;
+  width: 100%;
+  margin: 10px 0;
+}
+
+.btn {
+  cursor: pointer;
+  display: inline-block;
+  background: #ccc;
+  border: 1px #aaa;
+  border-radius: 3px;
+  padding: 10px 15px;
+  margin: 10px 10px 10px 0;
+}
+
+.al {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.al-err {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+
+/* heading */
+h1, h2, h3, h4, h5 {
+  font-weight: 400;
 }

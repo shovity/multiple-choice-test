@@ -1,22 +1,32 @@
 const mongoose = require('mongoose')
 const md5 = require('md5')
+const jwt = require('jsonwebtoken')
+
+const jwtSecrect = process.env.JWT_SECRET
 
 const userSchema = mongoose.Schema({
   username: String,
-  password: String,
-  token: String
+  password: String
 })
-
 
 userSchema.methods.show = function () {
   console.log(`Hi! i am ${this.name}`)
 }
 
-userSchema.methods.isExists = function () {
-  console.log(`Hi! i am ${this.name}`)
-}
-
 const User = mongoose.model('User', userSchema)
+
+User.auth = ({ username, password }, callback) => {
+  User.findOne({ username, password: md5(password) }, (err, user) => {
+    if (err) return callback(err)
+
+    if (user) {
+      const token = jwt.sign({ username }, jwtSecrect)
+      callback(null, token)
+    } else {
+      callback('Username or password not match')
+    }
+  })
+}
 
 User.addUser = ({ username, password }, callback) => {
   const errors = []
@@ -34,28 +44,25 @@ User.addUser = ({ username, password }, callback) => {
     return callback(errors)
   }
 
-
   User.findOne({ username }, (err, user) => {
     if (err) {
-      return callback(err)
+      return callback([ err ])
     }
 
-    // generate token
+    // check exists
     if (user !== null) {
       return callback(['username is exists'])
     }
 
-    const token = Math.random().toString(16).slice(2)
-    const newUser = new User({ username, password: md5(password), token })
+    const newUser = new User({ username, password: md5(password) })
 
     newUser.save((err) => {
-      if (err) return callback([err])
+      if (err) return callback([ err ])
+      const token = jwt.sign({ username }, jwtSecrect)
       callback(null, { username, token })
     })
 
   })
 }
 
-
 module.exports = User
-
