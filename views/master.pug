@@ -3,6 +3,8 @@ html
     title=title
     meta(meta name='viewport', content='width=device-width, initial-scale=1.0')
     link(rel='stylesheets', href='/stylesheets/style.css')
+    block head
   body
     block content
+    script(src='/socket.io/socket.io.js')
     script(src='/javascripts/client.js')

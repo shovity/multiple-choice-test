@@ -1,1 +1,4 @@
-console.log('im client')
+document.addEventListener('DOMContentLoaded', () => {
+  const socket = io()
+  //
+})

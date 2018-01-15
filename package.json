@@ -9,13 +9,17 @@
   "private": true,
   "scripts": {
     "start": "node app",
-    "dev": "nodemon app",
-    "start-db": "mongod --dbpath database"
+    "start-db": "mongod --dbpath database",
+    "nodemon": "nodemon app --ignore views --ignore node_modules",
+    "database": "mongod --dbpath database",
+    "dev": "concurrently --kill-others --names 'APP,MONGODB' 'npm run nodemon' 'npm run database'"
   },
   "dependencies": {
     "body-parser": "^1.18.2",
+    "concurrently": "^3.5.1",
     "cookie-parser": "^1.4.3",
     "express": "^4.16.2",
+    "jsonwebtoken": "^8.1.0",
     "md5": "^2.2.1",
     "mongoose": "^4.13.7",
     "pug": "^2.0.0-rc.4",
